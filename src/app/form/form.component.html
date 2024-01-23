@@ -11,7 +11,7 @@
         type="text"
         class="form-control"
         name="userName"
-        [ngModel]="userModel.name"
+        [(ngModel)]="userModel.name"
       />
     </div>
     <div class="form-control">
@@ -20,7 +20,7 @@
         type="email"
         class="form-control"
         name="email"
-        [ngModel]="userModel.email"
+        [(ngModel)]="userModel.email"
       />
     </div>
     <div class="form-control">
@@ -29,12 +29,12 @@
         type="tel"
         class="form-control"
         name="phone"
-        [ngModel]="userModel.phone"
+        [(ngModel)]="userModel.phone"
       />
     </div>
 
     <div class="form-group">
-      <select class="custom-select" name="topic" [ngModel]="userModel.topic">
+      <select class="custom-select" name="topic" [(ngModel)]="userModel.topic">
         <option value="">Im interested in</option>
         <option *ngFor="let topic of topics">{{ topic }}</option>
       </select>
@@ -48,7 +48,7 @@
           class="form-check-input"
           name="timePreference"
           value="morning"
-          [ngModel]="userModel.timePreferences"
+          [(ngModel)]="userModel.timePreferences"
         />
         <label class="form-check-label">Morning 9AM - 12PM</label>
       </div>
@@ -58,7 +58,7 @@
           class="form-check-input"
           name="timePreference"
           value="evening"
-          [ngModel]="userModel.timePreferences"
+          [(ngModel)]="userModel.timePreferences"
         />
         <label class="form-check-label">Evening 5PM - 8PM</label>
       </div>
@@ -69,7 +69,7 @@
         type="checkbox"
         class="form-check-input"
         name="subscribe"
-        [ngModel]="userModel.subscribed"
+        [(ngModel)]="userModel.subscribed"
       />
       <label class="form-check-label"> Send </label>
     </div>
