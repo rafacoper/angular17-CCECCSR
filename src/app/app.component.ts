@@ -6,6 +6,7 @@ import { EventbindingComponent } from './eventbinding/eventbinding.component';
 import { InteractorComponent } from './interactor/interactor.component';
 import { EmployeeListComponent } from './employee-list/employee-list.component';
 import { EmployeeDetailComponent } from './employee-detail/employee-detail.component';
+import { FormComponent } from './form/form.component';
 
 @Component({
   selector: 'app-root',
@@ -17,7 +18,8 @@ import { EmployeeDetailComponent } from './employee-detail/employee-detail.compo
     EventbindingComponent,
     InteractorComponent,
     EmployeeListComponent,
-    EmployeeDetailComponent
+    EmployeeDetailComponent,
+    FormComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',

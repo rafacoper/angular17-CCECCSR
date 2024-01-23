@@ -1,0 +1,47 @@
+<div class="container-fluid mb-5">
+  <h1>Forms</h1>
+  <form #userForm="ngForm">
+    <p>{{ userForm.value | json }}</p>
+    <div class="form-control">
+      <label for="name">Name</label>
+      <input type="text" class="form-control" name="userName" ngModel>
+    </div>
+    <div class="form-control">
+      <label for="email">Email</label>
+      <input type="email" class="form-control" name="email" ngModel>
+    </div>
+    <div class="form-control">
+      <label for="phone">Phone</label>
+      <input type="tel" class="form-control" name="phone" ngModel>
+    </div>
+
+    <div class="form-group">
+      <select class="custom-select" name="topic" ngModel>
+        <option selected>Im interested in</option>
+        <option *ngFor="let topic of topics">{{topic}}</option>
+      </select>
+    </div>
+
+    <div class="">
+      <label>Time preference</label>
+      <div class="form-check">
+        <input type="radio" class="form-check-input" name="timePreference" value="morning" ngModel>
+        <label class="form-check-label">Morning 9AM - 12PM</label>
+      </div>
+      <div class="form-check">
+        <input type="radio" class="form-check-input" name="timePreference" value="evening" ngModel>
+        <label class="form-check-label">Evening 5PM - 8PM</label>
+      </div>
+    </div>
+
+    <div class="form-check mb-3">
+      <input type="checkbox" class="form-check-input" name="subscribe" ngModel>
+      <label class="form-check-label">
+        Send
+      </label>
+    </div>
+
+    <button class="btn btn-primary" type="submit">Submit</button>
+
+  </form>
+</div>
