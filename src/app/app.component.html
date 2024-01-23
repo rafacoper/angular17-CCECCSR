@@ -1,9 +1,15 @@
 <main>
   <h1>{{title}}</h1>
 
-  <app-employee-list></app-employee-list>
-
-  <app-employee-detail></app-employee-detail>
+  <div style="text-align:center">
+    <h1>
+      Routing Application
+    </h1>
+  </div>
+  <nav>
+    <a routerLink="/departments" routerLinkActive="active">Departments</a>
+    <a routerLink="/employees" routerLinkActive="active">Employees</a>
+  </nav>
 
   <!-- <app-interactor
     [parentData]="interactorName1"
