@@ -26,9 +26,4 @@ import { FormComponent } from './form/form.component';
 })
 export class AppComponent {
   title = 'Learning Angular';
-
-  // interactorName1 = "Rafael";
-  // interactorName2 = "Paulin";
-
-  // message: any = "";
 }
