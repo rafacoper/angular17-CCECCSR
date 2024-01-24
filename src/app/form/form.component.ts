@@ -14,8 +14,8 @@ export class FormComponent {
   topics = ['Angular', 'React', 'HTML'];
 
   userModel = new User(
-    'Rafael',
-    'rafa.coper@outlook.com',
+    '',
+    '',
     3199315359,
     '',
     'morning',

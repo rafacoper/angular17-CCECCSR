@@ -1,10 +1,6 @@
 <div class="container-fluid mb-5">
   <h1>Forms</h1>
   <form #userForm="ngForm">
-    {{ userForm.value | json }}
-    <hr />
-    {{ userModel | json }}
-
     <div class="form-control">
       <label for="name">Name</label>
       <input
@@ -12,8 +8,14 @@
         class="form-control"
         name="userName"
         [(ngModel)]="userModel.name"
+        #name="ngModel"
+        required
+        [class.is-invalid]="name.invalid"
       />
     </div>
+
+    <h1>Name: {{ name.invalid }}</h1>
+
     <div class="form-control">
       <label for="email">Email</label>
       <input
@@ -21,8 +23,24 @@
         class="form-control"
         name="email"
         [(ngModel)]="userModel.email"
+        required
+        #email="ngModel"
+        dirty
+        [class.is-invalid]="email.invalid"
       />
     </div>
+
+    <div>
+      <h2>From email</h2>
+      <h5>Foi clicado? | Touched: {{ email.touched }}</h5>
+      <h5>
+        É o valor inicial - não foi modificado? | Pristine: {{ email.pristine }}
+      </h5>
+      <h5>Foi modificado? | Dirty: {{ email.dirty }}</h5>
+      <h5>É válido? | Valid: {{ email.valid }}</h5>
+      <h5>É inválido? | Invalid: {{ email.invalid }}</h5>
+    </div>
+
     <div class="form-control">
       <label for="phone">Phone</label>
       <input
@@ -30,11 +48,20 @@
         class="form-control"
         name="phone"
         [(ngModel)]="userModel.phone"
+        required
+        #phone="ngModel"
+        [class.is-invalid]="phone.invalid"
       />
     </div>
 
     <div class="form-group">
-      <select class="custom-select" name="topic" [(ngModel)]="userModel.topic">
+      <select
+        class="custom-select"
+        name="topic"
+        #topic="ngModel"
+        [(ngModel)]="userModel.topic"
+        [class.is-invalid]="topic.invalid"
+      >
         <option value="">Im interested in</option>
         <option *ngFor="let topic of topics">{{ topic }}</option>
       </select>
@@ -70,6 +97,7 @@
         class="form-check-input"
         name="subscribe"
         [(ngModel)]="userModel.subscribed"
+        #subscribe
       />
       <label class="form-check-label"> Send </label>
     </div>
