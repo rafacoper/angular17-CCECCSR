@@ -10,7 +10,7 @@
         [(ngModel)]="userModel.name"
         #name="ngModel"
         required
-        [class.is-invalid]="name.invalid"
+        [class.is-invalid]="name.invalid && name.touched"
       />
     </div>
 
