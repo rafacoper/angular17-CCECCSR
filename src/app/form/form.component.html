@@ -1,6 +1,6 @@
 <div class="container-fluid mb-5">
   <h1>Forms</h1>
-  <form #userForm="ngForm" (ngSubmit)="onSubmit()" novalidate>
+  <form #userForm="ngForm" *ngIf="!submitted" (ngSubmit)="onSubmit()" novalidate>
     {{ userForm.valid }}
     <div class="form-control">
       <label for="name">Name</label>
@@ -125,7 +125,7 @@
         [(ngModel)]="userModel.subscribed"
         #subscribe
       />
-      <label class="form-check-label"> Send </label>
+      <label class="form-check-label">Want to subscribe?</label>
     </div>
 
     <button [disabled]="userForm.invalid || topicHasError" class="btn btn-primary" type="submit">Submit</button>

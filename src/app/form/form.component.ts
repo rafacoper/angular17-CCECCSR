@@ -16,6 +16,8 @@ export class FormComponent {
   constructor(private _enrollmentService: EnrollmentService) {}
 
   topics = ['Angular', 'React', 'HTML'];
+  topicHasError = true
+  submitted = false;
 
   userModel = new User(
     '',
@@ -26,8 +28,6 @@ export class FormComponent {
     true
   );
 
-  topicHasError = true
-
   validateTopic(value: string) {
     if (value === 'default') {
       this.topicHasError = true;
@@ -35,6 +35,7 @@ export class FormComponent {
   }
 
   onSubmit() {
+    this.submitted = true;
     console.log(this.userModel);
     this._enrollmentService.enrol(this.userModel)
       .subscribe({
