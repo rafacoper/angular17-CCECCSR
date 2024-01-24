@@ -24,16 +24,10 @@ export class ReactiveFormsComponent {
   });
 
   loadApiData() {
-    this.registrationForm.setValue({
+    this.registrationForm.patchValue({
       email: 'Rafael',
       password: '12345678',
       confirmPassword: '12345678',
-      address: {
-        street: 'Uruguai',
-        complement: '1401',
-        neighborhood: 'Zion',
-        cep: '30310520',
-      }
     })
   }
 }
