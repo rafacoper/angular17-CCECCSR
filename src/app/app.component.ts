@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { FormComponent } from './form/form.component';
+import { ReactiveFormsComponent } from './reactive-forms/reactive-forms.component';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +10,8 @@ import { FormComponent } from './form/form.component';
   imports: [
     CommonModule,
     RouterOutlet,
-    FormComponent
+    FormComponent,
+    ReactiveFormsComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
