@@ -29,7 +29,7 @@
         required
         #email="ngModel"
         dirty
-        [class.is-invalid]="email.invalid"
+        [class.is-invalid]="email.invalid && email.touched"
       />
       <small class="text-danger" [class.d-none]="email.valid || email.untouched"
         >Email is required</small
@@ -62,15 +62,15 @@
       <!-- <small class="text-danger" [class.d-none]="phone.valid || phone.untouched"
         >Phone number is required and must be 10 digits</small
       >-->
-        <div *ngIf="phone.errors && (phone.invalid || phone.touched)">
-          <small class="text-danger" *ngIf="phone.errors['required']">
-            Phone number is required
-          </small>
-          <small class="text-danger" *ngIf="phone.errors['pattern']">
-            Phone must be 10 digits
-          </small>
-        </div>
-        <div></div>
+      <div *ngIf="phone.errors && (phone.invalid || phone.touched)">
+        <small class="text-danger" *ngIf="phone.errors['required']">
+          Phone number is required
+        </small>
+        <small class="text-danger" *ngIf="phone.errors['pattern']">
+          Phone must be 10 digits
+        </small>
+      </div>
+      <div></div>
     </div>
 
     <div class="form-group">
@@ -79,11 +79,17 @@
         name="topic"
         #topic="ngModel"
         [(ngModel)]="userModel.topic"
-        [class.is-invalid]="topic.invalid"
+        [class.is-invalid]="topicHasError && topic.touched"
+        required
+        (blur)="validateTopic(topic.value)"
+        (change)="validateTopic(topic.value)"
       >
-        <option value="">Im interested in</option>
+        <option value="default">Im interested in</option>
         <option *ngFor="let topic of topics">{{ topic }}</option>
       </select>
+      <span class="text-danger" [class.d-none]="!topicHasError || topic.untouched"
+        >Please choose</span
+      >
     </div>
 
     <div class="">

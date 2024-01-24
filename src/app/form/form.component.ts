@@ -16,9 +16,17 @@ export class FormComponent {
   userModel = new User(
     '',
     '',
-    319931535,
-    '',
+    3199315353,
+    'default',
     'morning',
     true
   );
+
+  topicHasError = true
+
+  validateTopic(value: string) {
+    if (value === 'default') {
+      this.topicHasError = true;
+    } else this.topicHasError = false;
+  }
 }
