@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { User } from '../user';
-import { EnrollmentService } from '../enrollment.service';
+// import { EnrollmentService } from '../enrollment.service';
 
 @Component({
   selector: 'app-form',
@@ -13,7 +13,7 @@ import { EnrollmentService } from '../enrollment.service';
 })
 export class FormComponent {
 
-  constructor(private _enrollmentService: EnrollmentService) {}
+  // constructor(private _enrollmentService: EnrollmentService) {}
 
   topics = ['Angular', 'React', 'HTML'];
   topicHasError = true
@@ -34,13 +34,13 @@ export class FormComponent {
     } else this.topicHasError = false;
   }
 
-  onSubmit() {
-    this.submitted = true;
-    console.log(this.userModel);
-    this._enrollmentService.enrol(this.userModel)
-      .subscribe({
-        next: data => console.log("Subscribe::: ", data),
-        error: err => console.log("Error::: ", err)
-      })
+  onSubmit(userForm: any) {
+    console.log(userForm);
+    // this.submitted = true;
+    // this._enrollmentService.enrol(this.userModel)
+    //   .subscribe({
+    //     next: data => console.log("Subscribe::: ", data),
+    //     error: err => console.log("Error::: ", err)
+    //   })
   }
 }
