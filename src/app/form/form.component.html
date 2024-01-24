@@ -1,6 +1,7 @@
 <div class="container-fluid mb-5">
   <h1>Forms</h1>
-  <form #userForm="ngForm">
+  <form #userForm="ngForm" (ngSubmit)="onSubmit()" novalidate>
+    {{ userForm.valid }}
     <div class="form-control">
       <label for="name">Name</label>
       <input
@@ -127,6 +128,6 @@
       <label class="form-check-label"> Send </label>
     </div>
 
-    <button class="btn btn-primary" type="submit">Submit</button>
+    <button [disabled]="userForm.invalid || topicHasError" class="btn btn-primary" type="submit">Submit</button>
   </form>
 </div>
