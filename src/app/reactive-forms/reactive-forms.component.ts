@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule, FormBuilder } from '@angular/forms';
+import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
+import { forbiddenNameValidator } from '../folder/forbiddenNameValidator';
 
 @Component({
   selector: 'app-reactive-forms',
@@ -13,33 +14,26 @@ export class ReactiveFormsComponent {
 
   constructor(private fb: FormBuilder) {}
 
+  get userName() {
+    return this.registrationForm.get('userName')
+  }
+
   registrationForm = this.fb.group({
-    email: ['rafael@gmail.com'],
-    password: [''],
-    confirmPassword: [''],
+    userName: ['', [Validators.required, Validators.minLength(3), forbiddenNameValidator]],
+    email: ['', [Validators.required, Validators.email]],
+    password: ['', Validators.required],
+    confirmPassword: ['', Validators.required],
     address: this.fb.group({
-      street: [''],
+      street: ['', Validators.required],
       complement: [''],
-      neighborhood: [''],
-      cep: [''],
+      neighborhood: ['', Validators.required],
+      cep: ['', Validators.required],
     })
   });
 
-  // registrationForm = new FormGroup({
-  //   email: new FormControl('Rafael'),
-  //   password: new FormControl(''),
-  //   confirmPassword: new FormControl(''),
-  //   address: new FormGroup({
-  //     street: new FormControl(''),
-  //     complement: new FormControl(''),
-  //     neighborhood: new FormControl(''),
-  //     cep: new FormControl(''),
-  //   })
-  // });
-
   loadApiData() {
-    this.registrationForm.setValue({
-      email: 'Rafael',
+    this.registrationForm.patchValue({
+      email: 'rafael@gmail',
       password: '12345678',
       confirmPassword: '12345678',
       address: {

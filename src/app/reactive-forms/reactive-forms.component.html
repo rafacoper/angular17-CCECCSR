@@ -3,13 +3,50 @@
   {{ registrationForm.value | json }}
   <form [formGroup]="registrationForm">
     <div class="form-group row">
+      <label>User name</label>
+      <input
+        type="text"
+        class="form-control"
+        name="userName"
+        formControlName="userName"
+        [class.is-invalid]="userName?.invalid && userName?.touched"
+      />
+      <div *ngIf="userName?.invalid && userName?.touched">
+        <span *ngIf="userName?.errors?.['required']" class="text-danger"
+          >É necessário preencher este campo.</span
+        >
+        <small
+          class="text-danger"
+          [class.d-none]="userName?.errors?.['minLength']"
+          >Nome precisa ser com mais de x caracteres. </small
+        >
+        <small
+          class="text-danger"
+          [class.d-none]="userName?.errors?.['forbiddenName']"
+          >Esse nome não rola, é proibído. </small
+        >
+      </div>
+    </div>
+    <div class="form-group row">
       <label for="email">E-mail</label>
       <input
         type="email"
         class="form-control"
         name="email"
         formControlName="email"
+        [class.is-invalid]="
+          registrationForm.get('email')?.invalid &&
+          registrationForm.get('email')?.touched
+        "
       />
+      <small
+        class="text-danger"
+        [class.d-none]="
+          registrationForm.get('email')?.valid ||
+          registrationForm.get('email')?.untouched
+        "
+        >E-mail is not valid</small
+      >
     </div>
     <div class="form-group row">
       <div class="col-md-3">
@@ -72,7 +109,12 @@
     </div>
 
     <button class="btn btn-primary" type="submit">Register</button>
-    <button (click)="loadApiData()" class="btn btn-secondary ml-2" type="button">Load API data</button>
-
+    <button
+      (click)="loadApiData()"
+      class="btn btn-secondary ml-2"
+      type="button"
+    >
+      Load API data
+    </button>
   </form>
 </div>
