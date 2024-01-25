@@ -1,6 +1,11 @@
 <div class="container-fluid mb-5">
   <h1>Forms</h1>
-  <form #userForm="ngForm" *ngIf="!submitted" (ngSubmit)="onSubmit()" novalidate>
+  <form
+    #userForm="ngForm"
+    *ngIf="!submitted"
+    (ngSubmit)="onSubmit(userForm)"
+    novalidate
+  >
     {{ userForm.valid }}
     <div class="form-control">
       <label for="name">Name</label>
@@ -88,7 +93,9 @@
         <option value="default">Im interested in</option>
         <option *ngFor="let topic of topics">{{ topic }}</option>
       </select>
-      <span class="text-danger" [class.d-none]="!topicHasError || topic.untouched"
+      <span
+        class="text-danger"
+        [class.d-none]="!topicHasError || topic.untouched"
         >Please choose</span
       >
     </div>
@@ -128,6 +135,12 @@
       <label class="form-check-label">Want to subscribe?</label>
     </div>
 
-    <button [disabled]="userForm.invalid || topicHasError" class="btn btn-primary" type="submit">Submit</button>
+    <button
+      [disabled]="userForm.invalid || topicHasError"
+      class="btn btn-primary"
+      type="submit"
+    >
+      Submit
+    </button>
   </form>
 </div>
